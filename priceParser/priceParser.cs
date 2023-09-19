@@ -6,7 +6,7 @@ namespace priceParser;
 
 class priceParser
 {
-    public static async Task Main()
+    public static async Task SecondMain()
     {
         // Define the URL of the website
         const string url = "https://touch.com.ua/item/apple-macbook-air-13-retina-m2-8-core-cpu-10-core-gpu-16-core-neural-engine-8gb-ram-512gb-ssd-starli_1/";
