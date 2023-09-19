@@ -40,6 +40,7 @@ class priceParser
                     // Extract the current price (assuming it's in the format "63 139 ₴")
                     var priceText = priceElement.TextContent.Trim().Replace("₴", "").Replace(" ", "");
                     var currentPrice = int.Parse(priceText, CultureInfo.InvariantCulture);
+                    var timestamp = DateTime.Now;
 
                     if (isDebug)
                     {
@@ -51,19 +52,17 @@ class priceParser
                     {
                         // First time checking, set the old price and timestamp
                         oldPrice = currentPrice;
-                        var timestamp = DateTime.Now;
                         Console.WriteLine($"Initial price: {currentPrice} ₴ at {timestamp}");
                     }
                     else if (currentPrice != oldPrice)
                     {
                         // Price has changed, send a notification with timestamp
-                        var newTimestamp = DateTime.Now;
-                        Console.WriteLine($"Price changed from {oldPrice} ₴ to {currentPrice} ₴ at {newTimestamp}.");
+                        Console.WriteLine($"Price changed from {oldPrice} ₴ to {currentPrice} ₴ at {timestamp}.");
                         oldPrice = currentPrice;
                     }
                     else
                     {
-                        Console.WriteLine($"No price change detected at {DateTime.Now}.");
+                        Console.WriteLine($"No price change detected at {timestamp}.");
                     }
                 }
                 else
